@@ -1,7 +1,7 @@
 package com.everis.alicante.courses.beca.java_.garage;
 
 public class Garaje extends Plaza {
-	//plaza[]
+	// plaza[]
 	//
 	private Plaza[] plazas;
 
@@ -12,6 +12,10 @@ public class Garaje extends Plaza {
 	public void setPlazas(Plaza[] plazas) {
 		this.plazas = plazas;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Garaje [plazas=" + plazas.length + "]";
+	}
+
 }

@@ -21,4 +21,9 @@ public class Plaza {
 		this.cliente = cliente;
 	}
 
+	@Override
+	public String toString() {
+		return "Plaza [precio=" + precio + ", cliente=" + cliente + "]";
+	}
+
 }

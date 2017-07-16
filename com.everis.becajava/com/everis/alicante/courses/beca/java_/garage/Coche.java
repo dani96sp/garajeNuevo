@@ -1,6 +1,6 @@
 package com.everis.alicante.courses.beca.java_.garage;
 
-public class Coche extends Vehiculo implements Aparcable{
+public class Coche extends Vehiculo implements Aparcable {
 	private String marca;
 
 	public String getMarca() {

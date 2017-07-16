@@ -1,6 +1,6 @@
 package com.everis.alicante.courses.beca.java_.garage;
 
-public class Camion {
+public class Camion extends Vehiculo {
 	private String marca;
 
 	public String getMarca() {
