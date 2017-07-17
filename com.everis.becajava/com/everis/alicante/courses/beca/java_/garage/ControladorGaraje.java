@@ -1,9 +1,9 @@
 package com.everis.alicante.courses.beca.java_.garage;
 
 public interface ControladorGaraje {
-	Plaza[] listarPlazasLibres();
+	void listarPlazasLibres();
 
-	Plaza[] listarPlazasOcupadas();
+	void listarPlazasOcupadas();
 
 	boolean reservarPlaza();
 }

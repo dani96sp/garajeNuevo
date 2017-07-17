@@ -1,19 +1,41 @@
 package com.everis.alicante.courses.beca.java_.garage;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class ControladorGarajeConArrays implements ControladorGaraje {
 
 	@Override
-	public Plaza[] listarPlazasLibres() {
+	public void listarPlazasLibres() {
 
-		return null;
+		List<Plaza> plazaslibres = new ArrayList<Plaza>();
+
+		Plaza[] plazas = GarajeMain.getGaraje().getPlazas();
+
+		for (int i = 0; i < plazas.length; i++) {
+			Plaza plaza = plazas[i];
+
+			if (plaza.getLibre()) {
+
+				plazaslibres.add(plaza);
+
+			}
+
+		}
+
+		for (Plaza plaza : plazaslibres) {
+
+			System.out.println(plaza);
+
+		}
+
 	}
 
 	@Override
-	public Plaza[] listarPlazasOcupadas() {
+	public void listarPlazasOcupadas() {
 
-		return null;
 	}
 
 	@Override
@@ -59,17 +81,16 @@ public class ControladorGarajeConArrays implements ControladorGaraje {
 		vehiculo.setMatricula(sc.nextLine());
 		cliente.setVehiculo(vehiculo);
 
-//		if (vehiculo instanceof Coche) {
-//			System.out.println("Inserte la Marca");
-//			((Coche) vehiculo).setMarca(sc.nextLine());
-//		} else if (vehiculo instanceof Motocicleta) {
-//			System.out.println("Inserte la Marca");
-//			((Motocicleta) vehiculo).setMarca(sc.nextLine());
-//		} else if (vehiculo instanceof Camion) {
-//			((Camion) vehiculo).setMarca(sc.nextLine());
-//		}
+		// if (vehiculo instanceof Coche) {
+		// System.out.println("Inserte la Marca");
+		// ((Coche) vehiculo).setMarca(sc.nextLine());
+		// } else if (vehiculo instanceof Motocicleta) {
+		// System.out.println("Inserte la Marca");
+		// ((Motocicleta) vehiculo).setMarca(sc.nextLine());
+		// } else if (vehiculo instanceof Camion) {
+		// ((Camion) vehiculo).setMarca(sc.nextLine());
+		// }
 
-		
 		boolean hayPlaza = false;
 		Garaje garaje = GarajeMain.getGaraje();
 		Plaza[] plazas = garaje.getPlazas();

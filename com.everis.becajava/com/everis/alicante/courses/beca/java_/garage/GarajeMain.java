@@ -161,8 +161,6 @@ public class GarajeMain {
 		
 		iniciarAplicacion();
 
-		sc.close();
-
 	}
 
 	public static Garaje getGaraje() {
