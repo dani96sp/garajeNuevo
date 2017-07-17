@@ -5,10 +5,9 @@ import java.util.Scanner;
 public class GarajeMain {
 
 	static Garaje garaje;
-	
+
 	static ControladorGaraje controlador;
-	
-	
+
 	public static void main(String[] args) {
 		inicializarComponentes(garaje);
 		// Inicializacion de la aplicacion
@@ -18,6 +17,7 @@ public class GarajeMain {
 	}
 
 	public static void inicializarComponentes(Garaje garaje) {
+		garaje = new Garaje();
 		// 5 vehiculos
 		Vehiculo[] vehiculos = new Vehiculo[5];
 
@@ -31,9 +31,9 @@ public class GarajeMain {
 		vehiculos[3].setMatricula("BAT " + "3333");
 
 		// 4 clientes
-		Cliente[] clientes = new Cliente[4];
+		Cliente[] clientes = new Cliente[20];
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 5; i++) {
 			clientes[i] = new Cliente();
 
 			clientes[i].setNif("" + i + i + i + i + i + i + i + i + "-L");
@@ -64,8 +64,14 @@ public class GarajeMain {
 		System.out.println("Nombre: " + clientes[3].getNombreCompleto());
 		System.out.println("Vehículo: " + clientes[3].getVehiculo());
 
+		clientes[4].setNombreCompleto("Peter Parker");
+		clientes[4].setVehiculo(vehiculos[4]);
+		System.out.println("NIF: " + clientes[4].getNif());
+		System.out.println("Nombre: " + clientes[4].getNombreCompleto());
+		System.out.println("Vehículo: " + clientes[4].getVehiculo());
+
 		// 30 plazas de garaje
-		garaje = new Garaje();
+
 
 		Plaza[] plazas = new Plaza[30];
 
@@ -96,9 +102,8 @@ public class GarajeMain {
 		garaje.setPlazas(plazas);
 		System.out.println(garaje);
 
-		
 		controlador = new ControladorGarajeConArrays();
-		
+
 	}
 
 	private static void iniciarAplicacion() {
@@ -108,16 +113,21 @@ public class GarajeMain {
 		System.out.println("");
 		System.out.println("**************************************************************");
 		System.out.println("Bienvenido al garaje");
-		System.out.println("*1 - Plazas Disponibles");
-		System.out.println("*2- Plazas Ocupadas");
-		System.out.println("3 - Ver Ingreso Mensual");
+		System.out.println("1 - Plazas Disponibles");
+		System.out.println("2- Plazas Ocupadas");
+		System.out.println("3 - Reservar una Plaza");
+		System.out.println("4 - Listar Clientes");
+		System.out.println("5 - Listar Vehiculos");
+		System.out.println("*6 - Ver Ingreso Mensual");
+
 		// System.out.println("");
 		// System.out.println("1 - Listar Plazas");
-		// System.out.println("3 - Reservar una Plaza");
-		// System.out.println("4 - Listar Clientes");
-		// System.out.println("5 - Listar Vehiculos");
 
 		int option = sc.nextInt();
+		boolean resultado = true;
+		
+
+		
 		System.out.println("Ha elegido la opcion :" + option);
 		switch (option) {
 		case 1:
@@ -127,14 +137,36 @@ public class GarajeMain {
 			controlador.listarPlazasOcupadas();
 			break;
 		case 3:
+			resultado = controlador.reservarPlaza();
+			break;
+		case 4:
+			System.out.println("Opcion sin implementar.");
+			break;
+		case 5:
+			System.out.println("Opcion sin implementar.");
+			break;
+		case 6:
 			System.out.println("Opcion sin implementar.");
 			break;
 
 		default:
 			break;
 		}
+		
+		if (option == 3 && resultado) {
+			System.out.println("Se ha reservado su plaza");
+		} else if (option == 3) {
+			System.out.println("No hay plaza disponible");
+		}
+		
+		iniciarAplicacion();
+
 		sc.close();
 
+	}
+
+	public static Garaje getGaraje() {
+		return garaje;
 	}
 
 }

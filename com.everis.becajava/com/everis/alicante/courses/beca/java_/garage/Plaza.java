@@ -1,10 +1,22 @@
 package com.everis.alicante.courses.beca.java_.garage;
 
 public class Plaza {
-	// cliente, precio
+
 	private double precio;
+
 	private Cliente cliente;
+
 	private int numeroPlaza;
+
+//	private Boolean libre;
+
+	public Boolean getLibre() {
+		if (cliente == null) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 
 	public double getPrecio() {
 		return precio;
