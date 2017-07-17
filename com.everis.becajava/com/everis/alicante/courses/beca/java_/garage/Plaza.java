@@ -4,6 +4,7 @@ public class Plaza {
 	// cliente, precio
 	private double precio;
 	private Cliente cliente;
+	private int numeroPlaza;
 
 	public double getPrecio() {
 		return precio;
@@ -21,9 +22,17 @@ public class Plaza {
 		this.cliente = cliente;
 	}
 
+	public int getNumeroPlaza() {
+		return numeroPlaza;
+	}
+
+	public void setNumeroPlaza(int numeroPlaza) {
+		this.numeroPlaza = numeroPlaza;
+	}
+
 	@Override
 	public String toString() {
-		return "Plaza [precio=" + precio + ", cliente=" + cliente + "]";
+		return "Plaza [" + numeroPlaza + "precio=" + precio + ", cliente=" + cliente + "]";
 	}
 
 }

@@ -1,10 +1,23 @@
 package com.everis.alicante.courses.beca.java_.garage;
 
+import java.util.Scanner;
+
 public class GarajeMain {
 
+	static Garaje garaje;
+	
+	static ControladorGaraje controlador;
+	
+	
 	public static void main(String[] args) {
+		inicializarComponentes(garaje);
 		// Inicializacion de la aplicacion
 
+		iniciarAplicacion();
+
+	}
+
+	public static void inicializarComponentes(Garaje garaje) {
 		// 5 vehiculos
 		Vehiculo[] vehiculos = new Vehiculo[5];
 
@@ -52,12 +65,23 @@ public class GarajeMain {
 		System.out.println("Vehículo: " + clientes[3].getVehiculo());
 
 		// 30 plazas de garaje
+		garaje = new Garaje();
+
 		Plaza[] plazas = new Plaza[30];
 
 		for (int i = 0; i < 30; i++) {
-			plazas[i] = new Plaza();
+			Plaza plazaTemp = new Plaza();
+			plazaTemp.setNumeroPlaza(i + 1);
 
-			plazas[i].setPrecio(1000 + i);
+			plazas[i] = plazaTemp;
+
+			if (i < 10) {
+				plazas[i].setPrecio(50);
+			} else if (i < 20) {
+				plazas[i].setPrecio(75);
+			} else {
+				plazas[i].setPrecio(100);
+			}
 
 			plazas[i].setCliente(null);
 		}
@@ -69,15 +93,48 @@ public class GarajeMain {
 		}
 
 		// 1 garaje
-		Garaje garaje = new Garaje();
-		garaje.setPlazas(new Plaza[30]);
-
+		garaje.setPlazas(plazas);
 		System.out.println(garaje);
 
-		inicializarComponentes();
+		
+		controlador = new ControladorGarajeConArrays();
+		
 	}
 
-	public static void inicializarComponentes() {
+	private static void iniciarAplicacion() {
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("");
+		System.out.println("");
+		System.out.println("**************************************************************");
+		System.out.println("Bienvenido al garaje");
+		System.out.println("*1 - Plazas Disponibles");
+		System.out.println("*2- Plazas Ocupadas");
+		System.out.println("3 - Ver Ingreso Mensual");
+		// System.out.println("");
+		// System.out.println("1 - Listar Plazas");
+		// System.out.println("3 - Reservar una Plaza");
+		// System.out.println("4 - Listar Clientes");
+		// System.out.println("5 - Listar Vehiculos");
+
+		int option = sc.nextInt();
+		System.out.println("Ha elegido la opcion :" + option);
+		switch (option) {
+		case 1:
+			controlador.listarPlazasLibres();
+			break;
+		case 2:
+			controlador.listarPlazasOcupadas();
+			break;
+		case 3:
+			System.out.println("Opcion sin implementar.");
+			break;
+
+		default:
+			break;
+		}
+		sc.close();
 
 	}
+
 }
