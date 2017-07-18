@@ -25,73 +25,79 @@ public class ControladorGarajeConArrays implements ControladorGaraje {
 
 		}
 
+		// listar por pantalla
 		for (Plaza plaza : plazaslibres) {
-
 			System.out.println(plaza);
-
 		}
 
 	}
 
 	@Override
 	public void listarPlazasOcupadas() {
+		List<Plaza> plazasocupadas = new ArrayList<Plaza>();
 
+		Plaza[] plazas = GarajeMain.getGaraje().getPlazas();
+
+		for (int i = 0; i < plazas.length; i++) {
+			Plaza plaza = plazas[i];
+
+			if (!plaza.getLibre()) {
+
+				plazasocupadas.add(plaza);
+
+			}
+
+		}
+
+		// listar por pantalla
+		for (Plaza plaza : plazasocupadas) {
+			System.out.println(plaza);
+		}
 	}
 
 	@Override
 	public boolean reservarPlaza() {
-		// logica de si hay vacias
-		Scanner sc = new Scanner(System.in);
+		// logica de crear cliente
 		Cliente cliente = new Cliente();
 
 		// vamos a escribir por pantalla un menu para meter los datos del cliente
 		System.out.println("Introduce tu nombre completo: ");
-		String nombre = sc.nextLine();
-		System.out.println("Introduce tu NIF: ");
-		String nif = sc.nextLine();
-		cliente.setNombreCompleto(nombre);
-		cliente.setNif(nif);
+		
+		Scanner sc = new Scanner(System.in);
+		cliente.setNombreCompleto(sc.nextLine());
+		
+		System.out.println("Introduce tu NIF: ");	
+		sc = new Scanner(System.in);
+		cliente.setNif(sc.nextLine());
+		
+		Vehiculo vehiculo = null;
+
 		System.out.println("Tipo de vehiculo ");
 		System.out.println("1 - Coche ");
 		System.out.println("2 - Moto ");
 		System.out.println("3 - Camion");
-
-		int tipo = sc.nextInt();
-		Vehiculo vehiculo = null;
-		switch (tipo) {
-		case 1:
-			vehiculo = new Coche();
-
-			break;
-		case 2:
-			vehiculo = new Motocicleta();
-
-			break;
-		case 3:
-			vehiculo = new Camion();
-
-			break;
-
-		default:
-			System.out.println("No ha seleccionado ninguno de los anteriores");
-			break;
+		
+		sc = new Scanner(System.in);
+		switch (sc.nextInt()) {
+			case 1:
+				vehiculo = new Coche();
+				break;
+			case 2:
+				vehiculo = new Motocicleta();
+				break;
+			case 3:
+				vehiculo = new Camion();
+				break;
+			default:
+				break;
 		}
 
 		System.out.println("Inserte la Matricula del vehiculo");
+		sc = new Scanner(System.in);
 		vehiculo.setMatricula(sc.nextLine());
 		cliente.setVehiculo(vehiculo);
 
-		// if (vehiculo instanceof Coche) {
-		// System.out.println("Inserte la Marca");
-		// ((Coche) vehiculo).setMarca(sc.nextLine());
-		// } else if (vehiculo instanceof Motocicleta) {
-		// System.out.println("Inserte la Marca");
-		// ((Motocicleta) vehiculo).setMarca(sc.nextLine());
-		// } else if (vehiculo instanceof Camion) {
-		// ((Camion) vehiculo).setMarca(sc.nextLine());
-		// }
-
-		boolean hayPlaza = false;
+		boolean hayplaza = false;
 		Garaje garaje = GarajeMain.getGaraje();
 		Plaza[] plazas = garaje.getPlazas();
 		for (int i = 0; i < plazas.length; i++) {
@@ -99,12 +105,12 @@ public class ControladorGarajeConArrays implements ControladorGaraje {
 
 			if (plaza.getLibre() && vehiculo instanceof Aparcable) {
 				plaza.setCliente(cliente);
-				hayPlaza = true;
-				return hayPlaza;
+				hayplaza = true;
+				return hayplaza;
 			}
 
 		}
-		return hayPlaza;
+		return hayplaza;
 
 		// si hay plazas libres setteamos un cliente a la plaza que queramos
 

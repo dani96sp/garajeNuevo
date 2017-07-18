@@ -13,9 +13,4 @@ public class Garaje extends Plaza {
 		this.plazas = plazas;
 	}
 
-	@Override
-	public String toString() {
-		return "Garaje [plazas=" + plazas.length + "]";
-	}
-
 }

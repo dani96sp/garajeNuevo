@@ -9,14 +9,14 @@ public class GarajeMain {
 	static ControladorGaraje controlador;
 
 	public static void main(String[] args) {
-		inicializarComponentes(garaje);
+		inicializarComponentes();
 		// Inicializacion de la aplicacion
 
 		iniciarAplicacion();
 
 	}
 
-	public static void inicializarComponentes(Garaje garaje) {
+	public static void inicializarComponentes() {
 		garaje = new Garaje();
 		// 5 vehiculos
 		Vehiculo[] vehiculos = new Vehiculo[5];
