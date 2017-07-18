@@ -1,15 +1,17 @@
 package com.everis.alicante.courses.becajava.garage.domain;
 
+import java.util.List;
+
 public class Garaje extends Plaza {
 	// plaza[]
 	//
-	private Plaza[] plazas;
+	private List<Plaza> plazas;
 
-	public Plaza[] getPlazas() {
+	public List<Plaza> getPlazas() {
 		return plazas;
 	}
 
-	public void setPlazas(Plaza[] plazas) {
+	public void setPlazas(List<Plaza> plazas) {
 		this.plazas = plazas;
 	}
 

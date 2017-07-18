@@ -12,8 +12,9 @@ import com.everis.alicante.courses.becajava.garage.interfaces.PlazaDAO;
 public class PlazaDAOFileImp implements PlazaDAO {
 
 	@Override
-	public Plaza[] readPlazas() throws IOException {
-		List data=new ArrayList<String>();
+	public List<Plaza> readPlazas() throws IOException {
+		
+		List<Plaza> plazas = new ArrayList<Plaza>();
 		String linea;
 
 		// buscar un fichero
@@ -23,14 +24,25 @@ public class PlazaDAOFileImp implements PlazaDAO {
 		
 		
 		while((linea=buffer.readLine())!=null) {
-			data.add(linea);
-			System.out.println(linea);
+			if(!linea.contains("NUMERO_PLAZA")||linea.isEmpty()) {		
+				Plaza plazaTemp = new Plaza();
+			
+				String[] tmp = linea.split(";");
+				
+				plazaTemp.setNumeroPlaza(Integer.parseInt(tmp[0]));
+				
+				plazaTemp.setPrecio(Double.parseDouble(tmp[1]));
+				
+				
+				plazas.add(plazaTemp);
+				
+			}
 		}
 		
 //		System.out.println(file.exists());
 		
 		
-		return null;
+		return plazas;
 	}
 
 	@Override
