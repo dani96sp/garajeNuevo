@@ -1,4 +1,4 @@
-package com.everis.alicante.courses.beca.java_.garage;
+package com.everis.alicante.courses.becajava.garage.domain;
 
 public class Plaza {
 

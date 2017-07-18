@@ -1,4 +1,4 @@
-package com.everis.alicante.courses.beca.java_.garage;
+package com.everis.alicante.courses.becajava.garage.domain;
 
 public class Cliente {
 	// vehiculo, dni, nombre
@@ -32,7 +32,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente = " + nombreCompleto + ", NIF = "+ nif + ", Vehiculo=" + vehiculo;
+		return nombreCompleto + ", NIF="+ nif + ", Vehiculo: " + vehiculo;
 	}
 	
 }

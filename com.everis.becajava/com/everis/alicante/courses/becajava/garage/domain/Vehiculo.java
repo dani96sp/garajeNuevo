@@ -1,4 +1,4 @@
-package com.everis.alicante.courses.beca.java_.garage;
+package com.everis.alicante.courses.becajava.garage.domain;
 
 public class Vehiculo {
 	private String matricula;
@@ -13,7 +13,7 @@ public class Vehiculo {
 
 	@Override
 	public String toString() {
-		return getMatricula();
+		return "Matricula=" + matricula;
 	}
 
 }

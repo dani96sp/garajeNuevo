@@ -1,6 +1,13 @@
-package com.everis.alicante.courses.beca.java_.garage;
+package com.everis.alicante.courses.becajava.garage;
 
 import java.util.Scanner;
+
+import com.everis.alicante.courses.becajava.garage.controller.ControladorGarajeConArrays;
+import com.everis.alicante.courses.becajava.garage.domain.Cliente;
+import com.everis.alicante.courses.becajava.garage.domain.Garaje;
+import com.everis.alicante.courses.becajava.garage.domain.Plaza;
+import com.everis.alicante.courses.becajava.garage.domain.Vehiculo;
+import com.everis.alicante.courses.becajava.garage.interfaces.ControladorGaraje;
 
 public class GarajeMain {
 
@@ -109,16 +116,15 @@ public class GarajeMain {
 	private static void iniciarAplicacion() {
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("");
-		System.out.println("");
+
 		System.out.println("**************************************************************");
-		System.out.println("Bienvenido al garaje");
 		System.out.println("1 - Plazas Disponibles");
 		System.out.println("2- Plazas Ocupadas");
 		System.out.println("3 - Reservar una Plaza");
 		System.out.println("4 - Listar Clientes");
 		System.out.println("5 - Listar Vehiculos");
 		System.out.println("*6 - Ver Ingreso Mensual");
+		System.out.println("0 - Salir de la aplicacion");
 
 		// System.out.println("");
 		// System.out.println("1 - Listar Plazas");
@@ -148,6 +154,9 @@ public class GarajeMain {
 		case 6:
 			System.out.println("Opcion sin implementar.");
 			break;
+		case 0:
+			System.out.println("Saliendo de la aplicacion.");
+			break;
 
 		default:
 			break;
@@ -158,8 +167,9 @@ public class GarajeMain {
 		} else if (option == 3) {
 			System.out.println("No hay plaza disponible");
 		}
-		
-		iniciarAplicacion();
+		if (option != 0){
+			iniciarAplicacion();
+		}
 
 	}
 

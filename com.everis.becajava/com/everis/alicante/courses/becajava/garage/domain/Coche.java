@@ -1,4 +1,6 @@
-package com.everis.alicante.courses.beca.java_.garage;
+package com.everis.alicante.courses.becajava.garage.domain;
+
+import com.everis.alicante.courses.becajava.garage.interfaces.Aparcable;
 
 public class Coche extends Vehiculo implements Aparcable {
 	private String marca;
