@@ -13,7 +13,7 @@ public class Garaje extends Plaza {
 	
 	private Map<String, Vehiculo> vehiculos;
 	
-	private Map<String, Cliente> cliente;
+	private Map<String, Cliente> clientes;
 	
 	
 	public List<Plaza> getPlazas() {
@@ -40,14 +40,12 @@ public class Garaje extends Plaza {
 		this.vehiculos = vehiculos;
 	}
 
-	public Map<String, Cliente> getCliente() {
-		return cliente;
+	public Map<String, Cliente> getClientes() {
+		return clientes;
 	}
 
-	public void setCliente(Map<String, Cliente> cliente) {
-		this.cliente = cliente;
+	public void setClientes(Map<String, Cliente> clientes) {
+		this.clientes = clientes;
 	}
-
-
 
 }

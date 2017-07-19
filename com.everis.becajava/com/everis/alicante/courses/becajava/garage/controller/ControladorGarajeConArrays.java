@@ -3,8 +3,10 @@ package com.everis.alicante.courses.becajava.garage.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.everis.alicante.courses.becajava.garage.GarajeMain;
@@ -24,7 +26,6 @@ public class ControladorGarajeConArrays implements ControladorGaraje {
 
 	@Override
 	public void listarPlazasLibres() {
-		
 		
 		List<Plaza> plazaslibres = new ArrayList<Plaza>();
 
@@ -146,6 +147,21 @@ public class ControladorGarajeConArrays implements ControladorGaraje {
 
 		// si hay plazas libres setteamos un cliente a la plaza que queramos
 
+	}
+
+	@Override
+	public void listarClientes() {
+		
+		Map<String, Cliente> clientes = GarajeMain.getGaraje().getClientes();
+				
+		Collection<Cliente> collection = clientes.values();
+		
+		for (Iterator iterator = collection.iterator(); iterator.hasNext();) {
+			Cliente cliente = (Cliente) iterator.next();
+			
+			System.out.println(cliente.getNombreCompleto());
+			
+		}		
 	}
 
 }

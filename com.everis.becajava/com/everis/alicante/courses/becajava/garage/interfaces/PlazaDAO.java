@@ -10,6 +10,6 @@ public interface PlazaDAO {
 
 	List<Plaza> readPlazas() throws FileNotFoundException, IOException;
 
-	void readPlazas(Plaza[] plazas);
+	void readPlaza(Plaza[] plazas);
 	
 }

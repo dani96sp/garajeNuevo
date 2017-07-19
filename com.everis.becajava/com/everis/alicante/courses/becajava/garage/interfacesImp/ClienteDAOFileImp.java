@@ -5,10 +5,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import com.everis.alicante.courses.becajava.garage.GarajeMain;
 import com.everis.alicante.courses.becajava.garage.domain.Cliente;
@@ -20,7 +19,7 @@ public class ClienteDAOFileImp implements ClienteDAO {
 	@Override
 	public 	Map<String, Cliente> readClientes() throws FileNotFoundException, IOException {
 
-		Map clientes = new HashMap<>();
+		 Map<String,Cliente> clientes= new TreeMap<String,Cliente>();		 
 		
 		String linea;
 
@@ -30,26 +29,25 @@ public class ClienteDAOFileImp implements ClienteDAO {
 		BufferedReader buffer = new BufferedReader(reader);
 
 		while ((linea = buffer.readLine()) != null) {
-			if (!linea.contains("NUMERO_PLAZA") || linea.isEmpty()) {
-				Map cliente = new HashMap<>();
-
-				String[] tmp = linea.split(";");
-//				tmp[0]
-				cliente.setNif(tmp[0]);
+			if(!linea.contains("NIF")||linea.isEmpty()){
+				Cliente clienteTemp= new Cliente();	
 				
+				String[] temp= linea.split(";");
 				
-				Vehiculo vehiculo = GarajeMain.getGaraje().getCliente().getVehiculo();
-
-//				Map vehiculo = new HashMap<>();
-
-//				vehiculo.put("2123223", new Vehiculo());
+				clienteTemp.setNif(temp[0]);
+				clienteTemp.setNombreCompleto(temp[1]);
 				
-//				cliente.setVehiculo(vehiculo).setMatricula(tmp[1]);
-				cliente.setVehiculo(GarajeMain.getGaraje().getCliente(vehiculo).setMatricula(tmp[1]);
-
-				cliente.setNif(tmp[2]);
-
-				clientes.add(cliente);
+										
+				clientes.put(clienteTemp.getNif(),clienteTemp);
+				
+//				Vehiculo vehiculo = GarajeMain.getGaraje().getCliente().getVehiculo();
+//
+////				Map vehiculo = new HashMap<>();
+//
+////				vehiculo.put("2123223", new Vehiculo());
+//				
+////				cliente.setVehiculo(vehiculo).setMatricula(tmp[1]);
+//				cliente.setVehiculo(GarajeMain.getGaraje().getCliente(vehiculo).setMatricula(tmp[1]);
 
 			}
 		}
@@ -59,7 +57,6 @@ public class ClienteDAOFileImp implements ClienteDAO {
 
 	@Override
 	public void createCliente(Cliente cliente) throws IOException {
-		// TODO Auto-generated method stub
 		
 	}
 

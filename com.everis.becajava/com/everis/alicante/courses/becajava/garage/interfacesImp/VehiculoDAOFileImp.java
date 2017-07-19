@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import com.everis.alicante.courses.becajava.garage.domain.Vehiculo;
 import com.everis.alicante.courses.becajava.garage.interfaces.VehiculoDAO;
@@ -15,9 +16,8 @@ public class VehiculoDAOFileImp implements VehiculoDAO{
 
 	@Override
 	public Map<String, Vehiculo> readVehiculos() throws FileNotFoundException, IOException {
-
-		Map vehiculos = new HashMap<>();
 		
+		Map<String,Vehiculo> vehiculos= new TreeMap<String,Vehiculo>();				
 		
 		String linea;
 
@@ -28,15 +28,16 @@ public class VehiculoDAOFileImp implements VehiculoDAO{
 
 		while ((linea = buffer.readLine()) != null) {
 			if (!linea.contains("NUMERO_PLAZA") || linea.isEmpty()) {
+				
 				Vehiculo vehiculo = new Vehiculo();
-				
+
 				String[] tmp = linea.split(";");
-				
+
 				vehiculo.setMatricula(tmp[0]);
 
-				
+				vehiculo.setTipoVehiculo(tmp[1]);
 
-				vehiculos.add(vehiculo);
+				vehiculos.put(vehiculo.getMatricula(), vehiculo);
 
 			}
 		}
@@ -46,7 +47,6 @@ public class VehiculoDAOFileImp implements VehiculoDAO{
 
 	@Override
 	public void createVehiculo(Vehiculo vehiculo) throws IOException {
-		// TODO Auto-generated method stub
 		
 	}
 

@@ -30,27 +30,8 @@ public class GarajeMain {
 
 	}
 
-	public static void inicializarComponentes() throws FileNotFoundException, IOException {
-
-		garaje = new Garaje();
-
-		PlazaDAO plazaDao = new PlazaDAOFileImp();
-
-		ReservaDAO reservaDao = new ReservaDAOFileImp();
-
-		ClienteDAO clienteDao = new ClienteDAOFileImp();
-
-		List<Plaza> plazasTemp = plazaDao.readPlazas();
-
-		garaje.setPlazas(plazasTemp);
-
-		controlador = new ControladorGarajeConArrays();
-
-	}
 
 	private static void iniciarAplicacion() throws IOException {
-		Scanner sc = new Scanner(System.in);
-
 		System.out.println("**************************************************************");
 		System.out.println("1 - Plazas Disponibles");
 		System.out.println("2- Plazas Ocupadas");
@@ -59,6 +40,8 @@ public class GarajeMain {
 		System.out.println("5 - Listar Vehiculos");
 		System.out.println("*6 - Ver Ingreso Mensual");
 		System.out.println("0 - Salir de la aplicacion");
+		
+		Scanner sc = new Scanner(System.in);
 
 		int option = sc.nextInt();
 		boolean resultado = true;
@@ -75,7 +58,7 @@ public class GarajeMain {
 			resultado = controlador.reservarPlaza();
 			break;
 		case 4:
-			System.out.println("Opcion sin implementar.");
+			controlador.listarClientes();	
 			break;
 		case 5:
 			System.out.println("Opcion sin implementar.");
@@ -101,7 +84,26 @@ public class GarajeMain {
 		}
 
 	}
+	public static void inicializarComponentes() throws FileNotFoundException, IOException {
 
+		garaje = new Garaje();
+
+		PlazaDAO plazaDao = new PlazaDAOFileImp();
+		ReservaDAO reservaDao = new ReservaDAOFileImp();
+		ClienteDAO clienteDao = new ClienteDAOFileImp();
+		
+		garaje.setPlazas(plazaDao.readPlazas());
+
+//		List<Plaza> plazasTemp = plazaDao.readPlazas();
+
+//		garaje.setPlazas(plazasTemp);
+		garaje.setClientes(clienteDao.readClientes());
+
+		controlador = new ControladorGarajeConArrays();
+
+	}
+	
+	
 	public static Garaje getGaraje() {
 		return garaje;
 	}
