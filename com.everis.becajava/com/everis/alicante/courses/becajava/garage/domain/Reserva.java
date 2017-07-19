@@ -4,6 +4,10 @@ import java.util.Date;
 
 public class Reserva {
 
+	private final String GUION = "-";
+
+	private String codigoReserva;
+
 	private Cliente cliente;
 
 	private Plaza plaza;
@@ -15,6 +19,21 @@ public class Reserva {
 	private Date fechaInicio;
 
 	private Date fechaFin;
+
+	public String getCodigoReserva() {
+
+		// logica del codigo de reserva
+		String codigoReserva = "";
+		codigoReserva = codigoReserva.concat(String.valueOf(this.plaza.getNumeroPlaza()));
+		
+		return codigoReserva;
+	}
+
+	public void setCodigoReserva(String codigoReserva) {
+		this.codigoReserva = codigoReserva;
+	}
+
+
 
 	public Cliente getCliente() {
 		return cliente;
@@ -71,10 +90,10 @@ public class Reserva {
 	}
 
 	public String toTxtFile() {
-//		Date fecha = fechaReserva.getDate();
-		return this.plaza.getNumeroPlaza() + ";" + this.plaza.getCliente().getNif() + ";" + this.plaza.getCliente().getVehiculo().getMatricula() + ";" + this.fechaReserva.toString() ;
-		
+		return this.getCodigoReserva()
+				+ this.plaza.getNumeroPlaza() + ";" + this.plaza.getCliente().getNif() + ";"
+				+ this.plaza.getCliente().getVehiculo().getMatricula() + ";" + this.fechaReserva.toString();
+
 	}
-	
-	
+
 }

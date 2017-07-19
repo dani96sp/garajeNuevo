@@ -8,12 +8,12 @@ public class Plaza {
 
 	private int numeroPlaza;
 
-//	private Boolean libre;
+	// private Boolean libre;
 
 	public Boolean getLibre() {
 		if (cliente == null) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}

@@ -32,7 +32,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return nombreCompleto + ", NIF="+ nif + ", Vehiculo: " + vehiculo;
+		return nombreCompleto + ", NIF=" + nif + ", Vehiculo: " + vehiculo;
 	}
-	
+
 }
