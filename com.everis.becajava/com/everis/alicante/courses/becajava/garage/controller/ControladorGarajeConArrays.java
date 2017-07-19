@@ -164,4 +164,19 @@ public class ControladorGarajeConArrays implements ControladorGaraje {
 		}		
 	}
 
+	@Override
+	public void listarVehiculos() {
+		
+		Map<String, Vehiculo> vehiculos = GarajeMain.getGaraje().getVehiculos();
+				
+		Collection<Vehiculo> collection = vehiculos.values();
+		
+		for (Iterator iterator = collection.iterator(); iterator.hasNext();) {
+			Vehiculo vehiculo = (Vehiculo) iterator.next();
+//			System.out.println(vehiculo.getTipoVehiculo());
+//			System.out.print(" - ");
+			System.out.println(vehiculo.getMatricula());
+			
+		}		
+	}
 }

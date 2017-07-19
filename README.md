@@ -20,5 +20,5 @@ public void listarClientes() {
 	Map<String, Cliente> clientes = GarageMain.getGaraje().getClientes();
 	syso clientes.keySet();
 	syso clientes.values();
-
+	syso clientes.get("matricula");
 }

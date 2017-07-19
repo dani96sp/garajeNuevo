@@ -27,7 +27,7 @@ public class VehiculoDAOFileImp implements VehiculoDAO{
 		BufferedReader buffer = new BufferedReader(reader);
 
 		while ((linea = buffer.readLine()) != null) {
-			if (!linea.contains("NUMERO_PLAZA") || linea.isEmpty()) {
+			if(!linea.contains("MATRICULA")||linea.isEmpty()){
 				
 				Vehiculo vehiculo = new Vehiculo();
 

@@ -61,7 +61,7 @@ public class GarajeMain {
 			controlador.listarClientes();	
 			break;
 		case 5:
-			System.out.println("Opcion sin implementar.");
+			controlador.listarVehiculos();	
 			break;
 		case 6:
 			System.out.println("Opcion sin implementar.");
